@@ -2,13 +2,22 @@ package main
 
 import (
 	_ "embed"
+	"encoding/json"
+	"fmt"
 	"pruebawails/src/db"
 
 	"github.com/wailsapp/wails"
 )
 
-func basic() string {
-	return db.Conect()
+func basic(name string) string {
+	return db.Connection(name)
+}
+
+func list() string {
+
+	users, _ := json.Marshal(db.List())
+	fmt.Println("USERRR:: ", users)
+	return string(users)
 }
 
 //go:embed frontend/build/static/js/main.js
@@ -28,5 +37,6 @@ func main() {
 		Colour: "#131313",
 	})
 	app.Bind(basic)
+	app.Bind(list)
 	app.Run()
 }

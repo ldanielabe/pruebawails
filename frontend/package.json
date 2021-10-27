@@ -4,12 +4,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/react": "^1.6.10",
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
+    "@wailsapp/runtime": "^1.0.10",
     "core-js": "^3.6.4",
+    "evergreen-ui": "^6.5.1",
+    "framer-motion": "^4.1.17",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "wails-react-scripts": "3.0.1-2",
+    "react-hook-form": "^7.18.0",
     "react-modal": "3.11.2",
-    "@wailsapp/runtime": "^1.0.10"
+    "wails-react-scripts": "3.0.1-2"
   },
   "scripts": {
     "serve": "react-scripts start",
