@@ -42,8 +42,8 @@ func List() []User {
 		if err2 := rows.Scan(&id, &name); err2 != nil {
 			fmt.Println("Error " + rows.Err().Error())
 		}
-		x := User{Id: id, Name: name}
-		names = append(names, x)
+		// x := User{Id: id, Name: name}
+		// names= append(names, x)
 	}
 
 	return names

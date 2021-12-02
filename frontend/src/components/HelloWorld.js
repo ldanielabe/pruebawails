@@ -54,7 +54,7 @@ function HelloWorld() {
 			</form>
 
 			<p>{result}</p>
-			<Table>
+			{/* <Table>
 			<Table.Head>
 				<Table.SearchHeaderCell />
 				<Table.TextHeaderCell>ID</Table.TextHeaderCell>
@@ -68,7 +68,7 @@ function HelloWorld() {
 				</Table.Row>
 				))}
 			</Table.VirtualBody>
-			</Table>
+			</Table> */}
 
 			</Modal>
 		</div>
