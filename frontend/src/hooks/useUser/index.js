@@ -1,21 +1,20 @@
 // Dependecies
-import React from 'react';
+import { useState } from 'react';
 
-function useUser() {
+function useUser(reset) {
 
-    // const onSubmit = (data) => {
-    //     try {
-    //         console.log("DATA:: ", data);
-           
-    //     } catch (e) {
-    //       reject();
-    //     }
-    // };
 
-    function onSubmitUser(data){ console.log(data); }
+	const [result, setResult] = useState(null);
+
+    const onSubmit = data => {
+      window.backend.basic(data.name).then((result) => setResult(result));
+      reset();
+      
+    }
 
       return {
-        onSubmitUser
+        onSubmit,
+        result
       };
 }
 

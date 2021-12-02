@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { TextInputField, Button, Table  } from 'evergreen-ui'
 import { useForm } from 'react-hook-form';
@@ -6,10 +6,9 @@ import { useForm } from 'react-hook-form';
 // Hooks
 import useUser from '../hooks/useUser';
 
-
 function HelloWorld() {
+	const { register, handleSubmit, reset, formState: { errors } } = useForm();
 	const [showModal, setShowModal] = useState(false);
-	const [result, setResult] = useState(null);
 	const [lista, setLista] = useState([]);
 
 	const handleOpenModal = () => {
@@ -21,13 +20,7 @@ function HelloWorld() {
 		setShowModal(false);
 	};
 
-	const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
-	// const { onSubmitUser } = useUser;
-
-	const onSubmit = data => {
-		window.backend.basic(data.name).then((result) => setResult(result));
-	}
+	const { onSubmit, result } = useUser(reset);
 
 	return (
 		<div className="App">
@@ -43,10 +36,10 @@ function HelloWorld() {
 				
 			<form onSubmit={handleSubmit(onSubmit)}>
 			
-			<TextInputField {...register("name", { required: true })} />
-			{errors.exampleRequired && <span>This field is required</span>}
-			
-			<Button marginRight={16} onClick={() => handleCloseModal()}>Cancelar</Button>
+				<TextInputField {...register("name", { required: true })} />
+				{errors.exampleRequired && <span>This field is required</span>}
+				
+				<Button marginRight={16} onClick={() => handleCloseModal()}>Cancelar</Button>
 
 				<Button marginRight={16} appearance="primary" type="submit">
 					Guardar
@@ -54,7 +47,7 @@ function HelloWorld() {
 			</form>
 
 			<p>{result}</p>
-			{/* <Table>
+			<Table>
 			<Table.Head>
 				<Table.SearchHeaderCell />
 				<Table.TextHeaderCell>ID</Table.TextHeaderCell>
@@ -68,7 +61,7 @@ function HelloWorld() {
 				</Table.Row>
 				))}
 			</Table.VirtualBody>
-			</Table> */}
+			</Table>
 
 			</Modal>
 		</div>
